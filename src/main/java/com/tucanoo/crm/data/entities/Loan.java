@@ -20,6 +20,7 @@ public class Loan {
     @Column
     private String loanType;
 
+
     public Integer getUserId() {
         return userId;
     }
@@ -51,5 +52,20 @@ public class Loan {
     }
 
     public Loan() {
+    }
+
+    public Loan(Long id, Integer userId, Integer loanAmount, String loanType) {
+        this.id = id;
+        this.userId = userId;
+        this.loanAmount = loanAmount;
+        this.loanType = loanType;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

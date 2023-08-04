@@ -3,6 +3,9 @@ package com.tucanoo.crm.controllers;
 import com.tucanoo.crm.data.entities.Customer;
 import com.tucanoo.crm.data.entities.Loan;
 import com.tucanoo.crm.data.repositories.LoanRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +19,10 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/loan")
+
 public class LoanController {
 
+    private static Logger log = LoggerFactory.getLogger(LoanController.class);
     @Autowired
     private final LoanRepository loanRepository;
 
@@ -33,8 +38,17 @@ public class LoanController {
         loan.setLoanAmount(loanAmount);
 
         Loan loanInstance = loanRepository.save(loan);
+
+        log.info(" Loan Id  : {}", loanInstance.getId());
+        log.info(" Loan Entity Created : {}", loanInstance);
+
         return new ResponseEntity<>(loanInstance, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Loan> createLoan(@PathVariable Long id ) {
+        Loan loanInstance = loanRepository.findById(id).get();
+        return new ResponseEntity<>(loanInstance, HttpStatus.OK);
+    }
 
 }
