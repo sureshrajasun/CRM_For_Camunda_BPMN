@@ -119,6 +119,12 @@ public class CustomerWebController {
         return new ResponseEntity<>(customerInstance, HttpStatus.OK);
     }
 
+    @PostMapping("/{id}/{loanAmount}/loanType")
+    public ResponseEntity<Customer> createLoan(@PathVariable String id) {
+        Customer customerInstance = customerRepository.findById(Long.valueOf(id)).get();
+        return new ResponseEntity<>(customerInstance, HttpStatus.OK);
+    }
+
     @PostMapping("/update")
     public String update(@Valid @ModelAttribute("customerInstance") Customer customerInstance,
                          BindingResult bindingResult,

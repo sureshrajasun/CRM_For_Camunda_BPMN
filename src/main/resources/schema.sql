@@ -8,3 +8,10 @@ CREATE TABLE CUSTOMER(
   country VARCHAR(64),
   phone_number VARCHAR(24)
 );
+
+CREATE TABLE LOAN(
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  user_id INTEGER,
+  loan_amount INTEGER,
+  loan_type VARCHAR(64)
+);
