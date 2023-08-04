@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tucanoo.crm.data.entities.Customer;
 import com.tucanoo.crm.data.repositories.CustomerRepository;
 import com.tucanoo.crm.services.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,6 +29,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/customer")
 public class CustomerWebController {
+
+    private static Logger log = LoggerFactory.getLogger(CustomerWebController.class);
 
     @Autowired
     private final CustomerRepository customerRepository;
@@ -116,6 +120,8 @@ public class CustomerWebController {
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable String id) {
         Customer customerInstance = customerRepository.findById(Long.valueOf(id)).get();
+
+        log.info("Sending Customer details : {}", customerInstance);
         return new ResponseEntity<>(customerInstance, HttpStatus.OK);
     }
 

@@ -91,5 +91,17 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

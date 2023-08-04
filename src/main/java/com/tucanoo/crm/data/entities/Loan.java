@@ -68,4 +68,14 @@ public class Loan {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", loanAmount=" + loanAmount +
+                ", loanType='" + loanType + '\'' +
+                '}';
+    }
 }

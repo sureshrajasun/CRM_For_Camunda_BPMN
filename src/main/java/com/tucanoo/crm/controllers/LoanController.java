@@ -46,7 +46,9 @@ public class LoanController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Loan> createLoan(@PathVariable Long id ) {
+    public ResponseEntity<Loan> createLoan(@PathVariable Long id ) throws InterruptedException {
+
+        Thread.sleep(8000);
         Loan loanInstance = loanRepository.findById(id).get();
         return new ResponseEntity<>(loanInstance, HttpStatus.OK);
     }
